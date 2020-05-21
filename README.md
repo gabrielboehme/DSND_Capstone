@@ -98,6 +98,6 @@ Example:
 
 1. This is the example used above in Postman: 
 
-![Input Example](Imgaes/prediction_1.png)
+![Input Example](Images/prediction_1.png)
 
 
