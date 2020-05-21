@@ -67,16 +67,16 @@ Note: Fitting the model may take some hours.
 1. Go to a API application like Postman
 
 2. Choose POST Method and insert the input values for prediction:
-	1.ticket_id
-	2.violation_code
-	3.disposition
-	4.fine_amount
-	5.late_fee
-	6.discount_amount
-	7.clean_up_cost
-	8.judgment_amount
-	9.lat
-	10.lon
+	* 1.ticket_id
+	* 2.violation_code
+	* 3.disposition
+	* 4.fine_amount
+	* 5.late_fee
+	* 6.discount_amount
+	* 7.clean_up_cost
+	* 8.judgment_amount
+	* 9.lat
+	* 10.lon
 Example: 
 {"ticket_id": 285361.0,"violation_code": 25.0,"disposition": 5.0,"fine_amount": 100.0,"late_fee": 10.0,"discount_amount": 0.0,"clean_up_cost": 0.0,"judgment_amount": 140.0,"lat": 42.426239,"lon": -83.238259}
 	
