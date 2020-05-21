@@ -78,7 +78,7 @@ Note: Fitting the model may take some hours.
 	* 9.lat
 	* 10.lon
 Example: 
-{"ticket_id": 285361.0,"violation_code": 25.0,"disposition": 5.0,"fine_amount": 100.0,"late_fee": 10.0,"discount_amount": 0.0,"clean_up_cost": 0.0,"judgment_amount": 140.0,"lat": 42.426239,"lon": -83.238259}
+* {"ticket_id": 285361.0,"violation_code": 25.0,"disposition": 5.0,"fine_amount": 100.0,"late_fee": 10.0,"discount_amount": 0.0,"clean_up_cost": 0.0,"judgment_amount": 140.0,"lat": 42.426239,"lon": -83.238259}
 	
 3.Should get a response =)
 	
