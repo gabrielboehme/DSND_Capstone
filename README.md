@@ -1,6 +1,6 @@
 # Data Science NanoDegree Capstone Project
 
-![Intro Pic](Images/prediction_1.png)
+![Intro Pic](Images/MainPage.png)
 
 ## Table of Contents
 1. [Project Motivation](#Motivation)
