@@ -32,6 +32,39 @@ def protected(f):
 
 #Routes
 
+@app.route('/')
+def index():
+
+    return render_template('master.html')
+
+@app.route('/predictform',methods=['POST'])
+def predictform():
+
+    #Get member info from request
+    form_data = request.form
+    df = pd.DataFrame(form_data, index=[1])
+    '''
+    ticket_id = request.args.get('ticket_id', '')
+    violation_code = request.args.get('violation_code','')
+    disposition = request.args.get('disposition','')
+    fine_amount = request.args.get('fine_amount','')
+    late_fee = request.args.get('late_fee','')
+    discount_amount = request.args.get('discount_amount','')
+    clean_up_cost = request.args.get('clean_up_cost','')
+    judgment_amount = request.args.get('judgment_amount','')
+    lat = request.args.get('lat','')
+    lon = request.args.get('lon','')
+    '''
+    #Predict with the model
+    predicted_data = model.predict(df)[0]
+
+    #Output to user
+    output = {'Prediction': predicted_data}
+    final_prediction = jsonify(output)
+
+    return final_prediction
+
+
 @app.route('/predict',methods=['POST'])
 def predict():
 
@@ -47,6 +80,8 @@ def predict():
     final_prediction = jsonify(output)
 
     return final_prediction
+
+
 
 
 if __name__ == '__main__':

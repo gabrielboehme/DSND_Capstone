@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Blight Predictor</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+	<style>
+
+	body { 
+    padding-top: 65px; 
+	}
+		
+	.navbar-brand
+	{
+	  font-family: 'Lato', sans-serif;
+	  color:grey;
+	  font-size: 40px;
+	  margin: 0px;
+	}
+
+  #navbar_brand_text
+  {
+    padding-left:15px;
+  }
+
+	.nav-item
+	{
+	  font-family: 'Lato', sans-serif;
+	  color:grey;
+	  font-size: 25px;
+	  margin: 0px;
+    padding-right:20px;
+	}
+
+	#classified_message
+	{
+	padding-top: 30px;
+	}
+
+	#classify_buttom
+	{
+	padding-top: 50px;
+	padding-bottom: 30px;
+	}
+
+  .text-center
+  {
+  padding-top: 20px;
+  padding-bottom: 0px;
+  }
+
+  #classifier_results{
+  padding-bottom: 40px;  
+  }
+
+
+	</style>
+
+
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top rounded-bottom" role="navigation">
+    <a class="navbar-brand align-middle" href="/">
+      <img src="https://detroithistorical.org/sites/default/files/images/events/21272326_10155688940630818_5344432685269938682_n.jpg" width="60" height="60" class="d-inline-block align-middle" alt="">
+    		<h2 id="navbar_brand_text" class="navbar-brand align-middle">Blight Ticket Predictor</h2>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+    data-target="#navbarTogglerDemo02" 
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" 
+    aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.udacity.com" target="_blank">
+  			<img src="https://seeklogo.com/images/U/udacity-logo-A0EF09B103-seeklogo.com.png" width="40" height="40" class="align-middle" alt="">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.linkedin.com/in/gabriel-boehme/" target="_blank">
+          	<img src="https://jornaldoempreendedor.com.br/wp-content/uploads/2014/08/linkedi-logo.png" width="45" height="45" class="align-middle" alt="">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/gabrielboehme/DSND_Capstone/" target="_blank">
+          	<img src="https://image.flaticon.com/icons/png/512/2175/2175377.png" width="45" height="45" class="align-middle" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="text-center">Blight Ticket Predictor</h1>
+        <p class="text-center">Analyzing Blight tickets to predict payment or not.</p>
+        <hr />
+      
+        <div class="row">
+            <div class="col-lg-12 form-group-lg">
+                <form action="/predictform" method="post">
+                    <input type="number" class="form-control form-control-lg" name="ticket_id" placeholder="Ticket ID">
+                    <input type="number " class="form-control form-control-lg" name="violation_code" placeholder="Violation Code">
+                    <input type="number" class="form-control form-control-lg" name="disposition" placeholder="Disposition">
+                    <input type="number" class="form-control form-control-lg" name="fine_amount" placeholder="Fine Amount">
+                    <input type="number" class="form-control form-control-lg" name="late_fee" placeholder="Late Fee">
+                    <input type="number" class="form-control form-control-lg" name="discount_amount" placeholder="Discount Amount">
+                    <input type="number" class="form-control form-control-lg" name="clean_up_cost" placeholder="Clean Up Cost">
+                    <input type="number" class="form-control form-control-lg" name="judgment_amount" placeholder="Judment Amount">
+                    <input type="number" class="form-control form-control-lg" name="lat" placeholder="Latitude">
+                    <input type="number" class="form-control form-control-lg" name="lon" placeholder="Longitude"> 
+                  <div id="classify_buttom"  class="col-lg-offset-5">
+                      <center> <button type="submit" class="btn btn-lg btn-success">Predict Blight</button> </center>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
