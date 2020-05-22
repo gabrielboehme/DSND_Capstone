@@ -28,7 +28,10 @@ blight violations
 
 ## Metrics
 The evaluation metric for this project is the Area Under the ROC Curve (AUC).
-The result with this model was 0.789571648559 
+The result with this model was 0.789571648559
+
+## Model development
+The development of the model can be find on the Data_Analysis notebook in this repository.
 
 <a name="getting_started"></a>
 ## Getting Started
